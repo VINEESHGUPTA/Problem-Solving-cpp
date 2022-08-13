@@ -1,0 +1,40 @@
+int majorityElement(int a[], int size)
+    {
+        // your code here
+        //using moore's voting Algorithm
+        //TC O(n)
+        //SC O(1)
+        
+        int candidate_element = a[0];
+        int count = 1;
+        
+        //Finding the candidate element 
+        for(int i=1;i<size;i++)
+        {
+            if(a[i]==candidate_element)
+            count++;
+            else 
+            count --;
+            
+            if(count==0)
+            {
+                candidate_element = a[i];
+                count = 1;
+            }
+        }
+        
+        //checking if the candidate element is majority elemment
+        
+        count = 0;
+        for(int i=0;i<size;i++)
+        {
+            if(a[i]==candidate_element)
+            count++;
+        }
+        
+        if(count>(size/2))
+        return candidate_element;
+        
+        return -1;
+        
+    }
