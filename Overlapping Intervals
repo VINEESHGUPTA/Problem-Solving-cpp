@@ -1,6 +1,6 @@
   //Sorting based on incoming time - ascending 
   //merging intervals based on previous outgoing and next incoming time
-  //TC O(n)
+  //TC O(n*log(n))
   //SC O(1)
    
    vector < vector < int >> overlappedInterval(vector < vector < int >> & intervals) {
