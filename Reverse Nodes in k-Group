@@ -1,0 +1,36 @@
+    
+        int length(ListNode* root){
+        int i = 0;
+        while ( root != NULL ){
+            i++;
+            root = root->next;
+        }
+        return i;
+    }
+    
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        
+        ListNode* curr = head;
+        ListNode* prev = NULL;
+        ListNode* next = NULL;
+        int count = 0;
+        int l = length(head);
+        while(curr!=NULL && count < k)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+        }
+        
+        if(curr!=NULL)
+        {
+            if((l-count)>=k)
+                head->next = reverseKGroup(next,k);
+            else
+                head->next = next;
+        }
+        
+        return prev;
+    }
